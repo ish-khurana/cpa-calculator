@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="calculator">
+        <h1>Web Calculator</h1>
+        <input type="text" id="input1" placeholder="Enter value">
+        
+        <label for="convertFrom">Convert From:</label>
+        <select id="convertFrom" onchange="checkFields()">
+            <option value="m">M</option>
+            <option value="w_w">w/w%</option>
+            <option value="w_v">w/v%</option>
+        </select>
+        
+        <label for="convertTo">Convert To:</label>
+        <select id="convertTo" onchange="checkFields()">
+            <option value="m">M</option>
+            <option value="w_w">w/w%</option>
+            <option value="w_v">w/v%</option>
+        </select>
+
+        <!-- Additional fields -->
+        <div id="molarMassField" style="display: none;">
+            <label for="molarMass">Molar Mass of Solute (g/mol):</label>
+            <input type="text" id="molarMass" placeholder="Enter molar mass">
+        </div>
+
+        <div id="densitySolventField" style="display: none;">
+            <label for="densitySolvent">Density of Solvent (g/mL):</label>
+            <input type="text" id="densitySolvent" placeholder="Enter density of solvent">
+        </div>
+
+        <div id="densitySoluteField" style="display: none;">
+            <label for="densitySolute">Density of Solute (g/mL):</label>
+            <input type="text" id="densitySolute" placeholder="Enter density of solute">
+        </div>
+        
+        <button onclick="convert()">Convert</button>
+        <div id="result"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

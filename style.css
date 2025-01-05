@@ -1,0 +1,18 @@
+#calculator div {
+    margin-top: 10px;
+}
+
+label {
+    font-size: 14px;
+    text-align: left;
+    display: block;
+    margin-bottom: 5px;
+}
+
+input, select, button {
+    padding: 10px;
+    font-size: 16px;
+    width: 100%;
+    margin: 0; /* Ensure no extra margin */
+    box-sizing: border-box;
+}

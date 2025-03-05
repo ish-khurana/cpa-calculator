@@ -37,9 +37,9 @@ function convert() {
                 ? `Converted to w/w%: ${convertMtoWW(value, molarMass, densitySolvent).toFixed(2)}%`
                 : "Please provide the molar mass of solute and density of solvent.";
         } else if (fromUnit === "w_w" && toUnit === "m") {
-            result = molarMass && densitySolvent
-                ? `Converted to M: ${convertWWtoM(value, molarMass,densitySolvent).toFixed(2)} M`
-                : "Please provide the molar mass of solute and density of solvent.";
+            result = molarMass && densitySolvent && densitySolute
+                ? `Converted to M: ${convertWWtoM(value, molarMass,densitySolvent, densitySolute).toFixed(2)} M`
+                : "Please provide the molar mass of solute, density of solvent, and density of solute.";
         } else if (fromUnit === "m" && toUnit === "w_v") {
             result = molarMass && densitySolute
                 ? `Converted to w/v%: ${convertMtoWV(value, molarMass, densitySolute).toFixed(2)}%`
@@ -72,13 +72,14 @@ function convertMtoWW(concentration, molarMass, densitySolvent) {
     return (massSolute / (massSolute + massSolvent)) * 100;
 }
 
-function convertWWtoM(weightByWeight, molarMass, densitySolvent){
+function convertWWtoM(weightByWeight, molarMass, densitySolvent, densitySolute){
     let massSolute = weightByWeight;
     let massSolvent = 100 - massSolute;
     let volSolvent = massSolvent * 1/(densitySolvent*1000);
+    let volSolute = massSolute * 1/(densitySolute*1000)
     let molSolute = massSolute * (1/molarMass);
 
-    return molSolute / volSolvent;
+    return molSolute / (volSolvent + volSolute);
 }
 
 function convertMtoWV(concentration, molarMass, densitySolute){
